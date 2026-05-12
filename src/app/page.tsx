@@ -184,7 +184,7 @@ export default function Home() {
                     <a href={p.live} target="_blank" rel="noopener noreferrer" style={{ color: "var(--cya)", fontSize: 12, textDecoration: "none", fontWeight: 500 }}>Live Demo</a>
                   )}
                   {p.docs && (
-                    <a href={p.docs} target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)", fontSize: 12, textDecoration: "none", fontWeight: 500 }}>Swagger</a>
+                    <a href={p.docs} target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)", fontSize: 12, textDecoration: "none", fontWeight: 500 }}>API Docs</a>
                   )}
                 </div>
               </div>
