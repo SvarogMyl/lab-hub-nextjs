@@ -1,26 +1,62 @@
-@import "tailwindcss";
-
+/* src/app/globals.css */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #08090f;
+  --surface: #0f1119;
+  --surface-border: #1d2030;
+  --surface-hi: #161826;
+  --text: #eaeaf2;
+  --dim: #7d8294;
+  --dim2: #5a5f72;
+  
+  --lav: #a5b4fc;
+  --vio: #7c3aed;
+  --cya: #22d3ee;
+  --fuc: #f0abfc;
+  --ok: #34d399;
+  --warn: #fbbf24;
+  --hot: #f472b6;
+  
+  --grad: linear-gradient(135deg, #a5b4fc 0%, #c084fc 25%, #f0abfc 50%, #67e8f9 75%, #a5b4fc 100%);
+  --grad-subtle: linear-gradient(135deg, #a5b4fc33 0%, #f0abfc22 50%, #22d3ee33 100%);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes glow-pulse {
+  0% { opacity: 0.6; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0.6; transform: scale(0.9); }
+}
+
+@keyframes slow-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
