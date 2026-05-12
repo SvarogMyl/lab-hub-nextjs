@@ -39,11 +39,14 @@ export default function Navigation() {
         </span>
       </div>
 
-      <nav style={{
-        display: "flex", gap: 2, padding: 4, position: "relative",
-        background: "rgba(15, 17, 25, 0.6)", border: "1px solid var(--surface-border)", 
-        borderRadius: 99, backdropFilter: "blur(20px)",
-      }}>
+      <nav 
+        className="nav-pill"
+        style={{
+          display: "flex", gap: 2, padding: 4, position: "relative",
+          background: "rgba(15, 17, 25, 0.6)", border: "1px solid var(--surface-border)", 
+          borderRadius: 99, backdropFilter: "blur(20px)",
+        }}
+      >
         {c.nav.map((n, i) => (
           <a 
             key={n.id} 

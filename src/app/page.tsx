@@ -21,32 +21,28 @@ export default function Home() {
       <Navigation />
 
       {/* ===== HERO ===== */}
-      <section id="hero" style={{ 
-        position: "relative", zIndex: 3, padding: "60px 56px 60px", 
+      <section id="hero" className="section-pad hero-grid" style={{ 
+        position: "relative", zIndex: 3, paddingTop: 60, paddingBottom: 60,
         display: "grid", gridTemplateColumns: "1.15fr 0.85fr", gap: 48, 
         alignItems: "center", minHeight: 700 
       }}>
-        <div>
+        <div className="hero-content" style={{ position: "relative", zIndex: 2 }}>
           <div style={{ 
-            display: "inline-flex", alignItems: "center", gap: 10, 
-            padding: "6px 14px", borderRadius: 99, 
-            border: `1px solid var(--surface-border)`, 
-            background: `rgba(15, 17, 25, 0.5)`, 
-            fontFamily: "var(--font-mono)", fontSize: 11, 
-            color: "var(--lav)", letterSpacing: 1, marginBottom: 28 
+            display: "inline-flex", alignItems: "center", gap: 10, padding: "6px 14px", 
+            background: "rgba(255,255,255,0.03)", border: "1px solid var(--surface-border)", 
+            borderRadius: 99, marginBottom: 24, fontSize: 10, fontFamily: "var(--font-mono)", letterSpacing: 2, color: "var(--cya)" 
           }}>
-            <span style={{ 
-              width: 6, height: 6, borderRadius: "50%", background: "var(--cya)", 
-              boxShadow: `0 0 8px var(--cya)`, animation: "glow-pulse 2s ease-in-out infinite" 
-            }} />
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--cya)", boxShadow: "0 0 10px var(--cya)", animation: "blink 1.5s infinite" }}></span>
             {c.hero.kicker}
           </div>
-          <h1 style={{
-            fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "clamp(48px, 6vw, 88px)", 
-            lineHeight: 0.98, letterSpacing: -3, margin: 0, whiteSpace: "pre-line",
-            background: `linear-gradient(180deg, var(--text) 0%, var(--text) 50%, var(--lav) 100%)`,
-            WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent",
-          }}>{c.hero.title}</h1>
+          <h1 className="hero-title" style={{ 
+            fontFamily: "var(--font-display)", fontSize: "clamp(48px, 6vw, 84px)", fontWeight: 800, 
+            lineHeight: 0.95, letterSpacing: -3, margin: 0 
+          }}>
+            {c.hero.title.split("\n").map((line, i) => (
+              <React.Fragment key={i}>{line}<br/></React.Fragment>
+            ))}
+          </h1>
           <p style={{ 
             color: "var(--dim)", fontSize: 18, lineHeight: 1.6, 
             maxWidth: 560, marginTop: 28, textWrap: "pretty" 
@@ -111,46 +107,31 @@ export default function Home() {
         </HoloCard>
       </section>
 
-      {/* ===== STATS BAR ===== */}
-      <section style={{ position: "relative", zIndex: 3, padding: "0 56px 80px" }}>
-        <div style={{
-          padding: 1, borderRadius: 24,
-          background: `linear-gradient(90deg, rgba(165, 180, 252, 0.2), rgba(124, 58, 237, 0.2), rgba(34, 211, 238, 0.2))`,
-        }}>
-          <div style={{
-            background: `rgba(15, 17, 25, 0.8)`, backdropFilter: "blur(20px)", borderRadius: 23,
-            padding: "28px 36px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24,
-          }}>
-            {c.about.stats.map((s, i) => (
-              <div key={s.v} style={{ borderLeft: i ? `1px solid var(--surface-border)` : "none", paddingLeft: i ? 24 : 0 }}>
-                <div style={{ 
-                  fontFamily: "var(--font-display)", fontSize: 56, fontWeight: 700, 
-                  letterSpacing: -2, lineHeight: 1, background: "var(--grad)", 
-                  WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" 
-                }}>{s.k}</div>
-                <div style={{ 
-                  fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--dim)", 
-                  letterSpacing: 1.5, textTransform: "uppercase", marginTop: 8 
-                }}>{s.v}</div>
-              </div>
-            ))}
+      {/* ===== ABOUT ===== */}
+      <section className="section-pad" style={{ position: "relative", zIndex: 3, paddingTop: 100, paddingBottom: 100 }}>
+        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+          <div className="hero-content">
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--vio)", letterSpacing: 2, marginBottom: 14 }}>{c.about.tag}</div>
+            <h2 className="section-title" style={{ fontFamily: "var(--font-display)", fontSize: 56, fontWeight: 700, letterSpacing: -2, lineHeight: 1, margin: 0 }}>{c.about.title}</h2>
+            <p style={{ color: "var(--dim)", fontSize: 16, lineHeight: 1.6, marginTop: 24, textWrap: "pretty" }}>{c.about.body}</p>
+            
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, marginTop: 48 }}>
+              {c.about.stats.map(s => (
+                <div key={s.k}>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: 42, fontWeight: 700, color: "var(--text)" }}>{s.k}</div>
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--dim)", textTransform: "uppercase", letterSpacing: 1 }}>{s.v}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="hero-visual" style={{ height: 400, position: "relative" }}>
+            <RobotViz mode="neural" />
           </div>
         </div>
       </section>
 
-      {/* ===== ABOUT ===== */}
-      <section style={{ position: "relative", zIndex: 3, padding: "60px 56px 100px", display: "grid", gridTemplateColumns: "0.7fr 1.3fr", gap: 56 }}>
-        <div>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--cya)", letterSpacing: 2, marginBottom: 18 }}>{c.about.tag}</div>
-          <h2 style={{ fontFamily: "var(--font-display)", fontSize: 56, fontWeight: 700, letterSpacing: -2, lineHeight: 1, margin: 0, whiteSpace: "pre-line" }}>{c.about.title}</h2>
-        </div>
-        <div>
-          <p style={{ fontSize: 19, lineHeight: 1.65, color: "var(--text)", opacity: 0.85, marginTop: 0, textWrap: "pretty" }}>{c.about.body}</p>
-        </div>
-      </section>
-
       {/* ===== PROJECTS (ECOSYSTEM) ===== */}
-      <section id="ecosystem" style={{ position: "relative", zIndex: 3, padding: "20px 56px 100px" }}>
+      <section id="ecosystem" className="section-pad" style={{ position: "relative", zIndex: 3, paddingTop: 20, paddingBottom: 100 }}>
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 48 }}>
           <div>
             <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--cya)", letterSpacing: 2, marginBottom: 14 }}>{c.projects.tag}</div>
@@ -194,7 +175,7 @@ export default function Home() {
       </section>
 
       {/* ===== STACK (INFRASTRUCTURE) ===== */}
-      <section id="infrastructure" style={{ position: "relative", zIndex: 3, padding: "60px 56px" }}>
+      <section id="infrastructure" className="section-pad" style={{ position: "relative", zIndex: 3, paddingTop: 60, paddingBottom: 60 }}>
         <div style={{ marginBottom: 40 }}>
           <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--cya)", letterSpacing: 2, marginBottom: 14 }}>{c.stack.tag}</div>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: 56, fontWeight: 700, letterSpacing: -2, margin: 0 }}>{c.stack.title}</h2>
@@ -218,7 +199,7 @@ export default function Home() {
       </section>
 
       {/* ===== TIMELINE (ROADMAP) ===== */}
-      <section id="roadmap" style={{ position: "relative", zIndex: 3, padding: "80px 56px" }}>
+      <section id="roadmap" className="section-pad" style={{ position: "relative", zIndex: 3, paddingTop: 80, paddingBottom: 80 }}>
         <div style={{ marginBottom: 40 }}>
           <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--cya)", letterSpacing: 2, marginBottom: 14 }}>{c.timeline.tag}</div>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: 56, fontWeight: 700, letterSpacing: -2, margin: 0 }}>{c.timeline.title}</h2>
@@ -245,7 +226,7 @@ export default function Home() {
       </section>
 
       {/* ===== AI LAB (focal, multi-panel console) ===== */}
-      <section style={{ position: "relative", zIndex: 3, padding: "60px 56px 100px" }}>
+      <section className="section-pad" style={{ position: "relative", zIndex: 3, paddingTop: 60, paddingBottom: 100 }}>
         <div style={{
           padding: 1, borderRadius: 32,
           background: `linear-gradient(135deg, rgba(165, 180, 252, 0.4), rgba(124, 58, 237, 0.4), rgba(34, 211, 238, 0.4))`,
@@ -283,8 +264,10 @@ export default function Home() {
                 border: `1px solid var(--surface-border)`, overflow: "hidden",
               }}>
                 <RobotViz mode="neural" />
-                <div style={{ position: "absolute", bottom: 20, left: 20, fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--ok)" }}>
-                   ● ALL SYSTEMS NOMINAL
+                <div className="hero-visual" style={{ position: "relative", height: "100%", minHeight: 400 }}>
+                  <div style={{ position: "absolute", bottom: 20, left: 20, fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--ok)" }}>
+                     ● ALL SYSTEMS NOMINAL
+                  </div>
                 </div>
               </div>
             </div>
@@ -293,7 +276,7 @@ export default function Home() {
       </section>
 
       {/* ===== CONTACT ===== */}
-      <section id="contact" style={{ position: "relative", zIndex: 3, padding: "140px 56px", textAlign: "center" }}>
+      <section id="contact" className="section-pad" style={{ position: "relative", zIndex: 3, paddingTop: 140, paddingBottom: 140, textAlign: "center" }}>
         <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--cya)", letterSpacing: 2, marginBottom: 18 }}>// open_channel</div>
         <h2 style={{
           fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "clamp(60px, 10vw, 120px)", 
