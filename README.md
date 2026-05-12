@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧊 Lab Hub: Modular Engineering Portal
 
-## Getting Started
+A high-performance, centralized dashboard for the **Laboratory Microservice Ecosystem**. This portal acts as the single source of truth for service health, project trajectory, and technical manifest, built on top of the **Holo Design System**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🤖 AI Onboarding Guide
+> [!IMPORTANT]
+> **To any AI agent reading this repo**: This is a Next.js 16 (App Router) project using TypeScript. It implements a custom design system called "Holo".
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Core Architectural Patterns:
+- **Design System**: Located in `src/app/globals.css` (tokens) and `src/components/ui/`. It uses Vanilla CSS for performance.
+- **Content Strategy**: Multi-language (EN/ES) support is handled by `src/context/LanguageContext.tsx` and centralized in `src/constants/content.ts`.
+- **Visuals**: Research-focused components (SVG animations) are in `src/components/visuals/`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### How to extend this repo:
+1. **Update Projects**: Modify `CONTENT.projects.items` in `src/constants/content.ts`.
+2. **Add Sections**: Create a new component and add an entry with a corresponding `id` in the `nav` constant.
+3. **Theming**: Use the CSS variables defined in `globals.css` (e.g., `var(--cya)`, `var(--lav)`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🎨 Holo Design System
+This project is built using the **[Holo Template](https://github.com/SvarogMyl/lab-template-holo)**.
 
-To learn more about Next.js, take a look at the following resources:
+### Key Design Tokens:
+- **Typography**: 
+  - `Syne`: Headlines & Display.
+  - `Space Grotesk`: Body & Description.
+  - `JetBrains Mono`: UI, Meters, and Code.
+- **Glassmorphism**: Achieved via `HoloCard` component using `backdrop-filter: blur(20px)` and semi-transparent gradient borders.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧩 Featured Sections
 
-## Deploy on Vercel
+### 1. 🛰️ Ecosystem Monitor
+Real-time visualization of the laboratory's active services. Features external links to GitHub, Live Demos, and Swagger documentation.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. 🧠 AI Lab (Telemetry)
+A sophisticated control room section using `RobotViz` to demonstrate system metrics, latency probes, and neural inference simulations.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 3. 📈 Trajectory Roadmap
+A visual timeline tracing the project from foundation (Q1 2026) to future ambitions (Blockchain, Rust, Intelligent Agents).
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript
+- **State/i18n**: React Context API
+- **Visuals**: Framer Motion (conceptually) + Vanilla CSS Keyframes + SVG
+- **Deployment**: Vercel
+
+---
+
+## 🚀 Getting Started
+
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Development Server**:
+   ```bash
+   npm run dev
+   ```
+
+3. **Production Build**:
+   ```bash
+   npm run build
+   ```
+
+---
+Built with obsession by **Svarog** at the **Lab Hub**.
