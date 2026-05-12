@@ -51,7 +51,7 @@ A visual timeline tracing the project from foundation (Q1 2026) to future ambiti
 - **Language**: TypeScript
 - **State/i18n**: React Context API
 - **Visuals**: Framer Motion (conceptually) + Vanilla CSS Keyframes + SVG
-- **Deployment**: Vercel
+- **Deployment**: [Cloudflare Pages](docs/deploy-cloudflare.md) (Primary) / Vercel (Backup)
 
 ---
 
