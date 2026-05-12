@@ -91,6 +91,9 @@ body {
     padding: 6px 10px !important;
     font-size: 11px !important;
   }
+  .nav-logo {
+    display: none !important;
+  }
 }
 
 @media (max-width: 480px) {
