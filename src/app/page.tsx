@@ -139,7 +139,7 @@ export default function Home() {
             <p style={{ color: "var(--dim)", marginTop: 8 }}>{c.projects.sub}</p>
           </div>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))", gap: 18 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 360px), 1fr))", gap: 18 }}>
           {c.projects.items.map((p, i) => (
             <HoloCard key={p.id} padding={0}>
               <div style={{ padding: 22, display: "flex", flexDirection: "column", minHeight: 450 }}>
@@ -206,11 +206,11 @@ export default function Home() {
         </div>
         <div style={{ borderRadius: 24, overflow: "hidden", border: "1px solid var(--surface-border)", background: "rgba(15, 17, 25, 0.4)", backdropFilter: "blur(20px)" }}>
           {c.timeline.items.map((it, i) => (
-            <div key={i} style={{
+            <div key={i} className="roadmap-item" style={{
               padding: "26px 32px", display: "grid", gridTemplateColumns: "100px 140px 1fr 1.2fr 60px", gap: 24,
               alignItems: "center", borderTop: i ? `1px solid var(--surface-border)` : "none",
             }}>
-              <div style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 700, background: "var(--grad)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{it.year}</div>
+              <div className="roadmap-year" style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 700, background: "var(--grad)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{it.year}</div>
               <div style={{ borderRadius: 10, padding: 6, background: `rgba(8, 9, 15, 0.5)`, border: `1px solid var(--surface-border)` }}>
                 <TimelineSpark kind={String(i)} accent="#22d3ee" accent2="#a5b4fc" />
               </div>
@@ -219,7 +219,7 @@ export default function Home() {
                 <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--dim)", marginTop: 4 }}>{it.org}</div>
               </div>
               <div style={{ color: "var(--dim)", fontSize: 14, lineHeight: 1.5 }}>{it.body}</div>
-              <div style={{ textAlign: "right", color: "var(--lav)", fontFamily: "var(--font-mono)", fontSize: 16 }}>→</div>
+              <div className="roadmap-arrow" style={{ textAlign: "right", color: "var(--lav)", fontFamily: "var(--font-mono)", fontSize: 16 }}>→</div>
             </div>
           ))}
         </div>
@@ -235,10 +235,10 @@ export default function Home() {
             borderRadius: 31, background: `rgba(15, 17, 25, 0.95)`, backdropFilter: "blur(30px)",
             padding: 48, position: "relative", overflow: "hidden",
           }}>
-            <div style={{ display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: 48, alignItems: "stretch", position: "relative" }}>
-              <div>
+            <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: 48, alignItems: "stretch", position: "relative" }}>
+              <div className="hero-content" style={{ textAlign: "left" }}>
                 <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--cya)", letterSpacing: 2, marginBottom: 16 }}>// infrastructure_watch</div>
-                <h2 style={{ fontFamily: "var(--font-display)", fontSize: 64, fontWeight: 700, letterSpacing: -2.5, lineHeight: 1, margin: 0 }}>System Monitor</h2>
+                <h2 className="section-title" style={{ fontFamily: "var(--font-display)", fontSize: 64, fontWeight: 700, letterSpacing: -2.5, lineHeight: 1, margin: 0 }}>System Monitor</h2>
                 <p style={{ color: "var(--dim)", fontSize: 16, lineHeight: 1.6, marginTop: 20, maxWidth: 480, textWrap: "pretty" }}>
                   A live control room for our distributed microservices. Monitor latency, throughput, and health status in real-time.
                 </p>
@@ -258,16 +258,14 @@ export default function Home() {
               </div>
 
               {/* Lab Console */}
-              <div style={{
-                position: "relative", borderRadius: 20, height: 500,
+              <div className="hero-visual" style={{
+                position: "relative", borderRadius: 20, minHeight: 400,
                 background: `radial-gradient(ellipse at center, rgba(8, 9, 15, 0.8), rgba(15, 17, 25, 0.9))`,
                 border: `1px solid var(--surface-border)`, overflow: "hidden",
               }}>
                 <RobotViz mode="neural" />
-                <div className="hero-visual" style={{ position: "relative", height: "100%", minHeight: 400 }}>
-                  <div style={{ position: "absolute", bottom: 20, left: 20, fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--ok)" }}>
-                     ● ALL SYSTEMS NOMINAL
-                  </div>
+                <div style={{ position: "absolute", bottom: 20, left: 20, fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--ok)", zIndex: 10 }}>
+                   ● ALL SYSTEMS NOMINAL
                 </div>
               </div>
             </div>

@@ -88,20 +88,33 @@ body {
     padding: 2px !important;
   }
   .nav-pill a {
-    padding: 6px 10px !important;
+    padding: 6px 12px !important;
     font-size: 11px !important;
   }
   .nav-logo {
+    display: none !important;
+  }
+  
+  /* Roadmap Mobile */
+  .roadmap-item {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    text-align: left !important;
+  }
+  .roadmap-year {
+    font-size: 24px !important;
+  }
+  .roadmap-arrow {
     display: none !important;
   }
 }
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 40px !important;
+    font-size: 38px !important;
   }
   .section-title {
-    font-size: 36px !important;
+    font-size: 32px !important;
   }
 }
 
@@ -119,4 +132,15 @@ body {
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
