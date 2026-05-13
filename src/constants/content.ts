@@ -1,10 +1,10 @@
 export const CONTENT = {
   en: {
     nav: [
-      { label: "Index", id: "hero" },
+      { label: "Home", id: "hero" },
       { label: "Ecosystem", id: "ecosystem" },
-      { label: "Roadmap", id: "roadmap" },
       { label: "Infrastructure", id: "infrastructure" },
+      { label: "Roadmap", id: "roadmap" },
       { label: "Contact", id: "contact" }
     ],
     hero: {
@@ -90,7 +90,7 @@ export const CONTENT = {
     },
     lab: {
       tag: "// ai_lab",
-      title: "The AI lab",
+      title: "The AI Lab",
       sub: "A live, slightly-haunted control room. The model below isn't a stock photo — it's a 6-layer attention probe running in your browser.",
       bullets: [
         "On-device inference, no round-trips.",
@@ -116,25 +116,13 @@ export const CONTENT = {
         { year: "2027", title: "Global Scale", org: "Blockchain · Rust", body: "Multi-region deployment and medicinal traceability with Blockchain." },
       ],
     },
-    bot: {
-      title: "lab//assist",
-      sub: "Live Assistant",
-      greeting: "Welcome to Lab Hub. How can I help you navigate the ecosystem?",
-      placeholder: "Ask about projects or tech...",
-      suggestions: ["What projects are live?", "Tell me about the stack", "Show the roadmap"],
-      answers: {
-        "What projects are live?": "We have 4 live projects: Lab Frontend, Backend Core, Lab Monitor, and Data Service. Auth Service is currently in development.",
-        "Tell me about the stack?": "We use a multi-language approach: Java, Node.js, Go, and Python, hosted on Render and Vercel with Supabase as our DB.",
-        "Show the roadmap": "We are currently in the 'Performance & Hub' phase. Future goals include AI integration and Blockchain traceability."
-      },
-    },
   },
   es: {
     nav: [
       { label: "Inicio", id: "hero" },
       { label: "Ecosistema", id: "ecosystem" },
-      { label: "Roadmap", id: "roadmap" },
       { label: "Infraestructura", id: "infrastructure" },
+      { label: "Roadmap", id: "roadmap" },
       { label: "Contacto", id: "contact" }
     ],
     hero: {
@@ -220,7 +208,7 @@ export const CONTENT = {
     },
     lab: {
       tag: "// ai_lab",
-      title: "El laboratorio IA",
+      title: "El Laboratorio IA",
       sub: "Una sala de control en vivo, ligeramente embrujada. El modelo de abajo no es stock — es una sonda de atención de 6 capas corriendo en tu navegador.",
       bullets: [
         "Inferencia local, sin round-trips.",
@@ -245,18 +233,6 @@ export const CONTENT = {
         { year: "Q4 2026", title: "Intelligent Ecosystem", org: "LLM · Agentes", body: "Integración de agentes inteligentes para análisis predictivo y búsqueda semántica." },
         { year: "2027", title: "Global Scale", org: "Blockchain · Rust", body: "Despliegue multi-región y trazabilidad inmutable de medicamentos con Blockchain." },
       ],
-    },
-    bot: {
-      title: "lab//assist",
-      sub: "Asistente en vivo",
-      greeting: "Bienvenido al Lab Hub. ¿Cómo puedo ayudarte a navegar el ecosistema?",
-      placeholder: "Pregunta sobre proyectos o tech...",
-      suggestions: ["¿Qué proyectos están activos?", "Cuéntame del stack", "Muestra el roadmap"],
-      answers: {
-        "¿Qué proyectos están activos?": "Tenemos 4 proyectos en vivo: Lab Frontend, Backend Core, Lab Monitor y Data Service. El Auth Service está en desarrollo.",
-        "Cuéntame del stack": "Usamos un enfoque multi-lenguaje: Java, Node.js, Go y Python, alojados en Render y Vercel con Supabase como DB.",
-        "Muestra el roadmap": "Estamos en la fase 'Performance & Hub'. Los planes futuros incluyen integración de IA y trazabilidad Blockchain."
-      },
     },
   },
 };
