@@ -20,25 +20,25 @@ export default function Navigation() {
 
   return (
     <header style={{ 
-      position: "fixed", top: 12, left: 0, right: 0, zIndex: 100,
-      display: "flex", justifyContent: "center", padding: "0 12px",
-      pointerEvents: "none", width: "100%"
+      position: "fixed", top: 12, left: 12, right: 12, zIndex: 100,
+      display: "flex", justifyContent: "center", pointerEvents: "none",
+      boxSizing: "border-box"
     }}>
       <div style={{
         display: "flex", alignItems: "center", gap: 8, pointerEvents: "auto",
-        width: "100%", maxWidth: 600, // Constrain on desktop, but full width on mobile
-        background: scrolled ? "rgba(8, 9, 15, 0.4)" : "transparent",
-        borderRadius: 99, padding: scrolled ? "4px 8px" : "0",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
+        width: "100%", maxWidth: 640, boxSizing: "border-box",
+        background: scrolled ? "rgba(8, 9, 15, 0.5)" : "transparent",
+        borderRadius: 99, padding: scrolled ? "4px" : "0",
+        backdropFilter: scrolled ? "blur(16px)" : "none",
         transition: "all 0.3s ease"
       }}>
         {/* Desktop Logo */}
         <div 
           className="nav-logo"
           style={{ 
-            background: "rgba(15, 17, 25, 0.7)", backdropFilter: "blur(20px)",
+            background: "rgba(15, 17, 25, 0.8)", backdropFilter: "blur(24px)",
             border: "1px solid var(--surface-border)", borderRadius: 99,
-            padding: "0 20px", height: 40, display: "flex", alignItems: "center",
+            padding: "0 18px", height: 40, display: "flex", alignItems: "center",
             fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 13,
             letterSpacing: 2, color: "var(--text)", flexShrink: 0
           }}
@@ -55,7 +55,7 @@ export default function Navigation() {
             borderRadius: 99, backdropFilter: "blur(24px)",
             overflowX: "auto", whiteSpace: "nowrap", WebkitOverflowScrolling: "touch",
             boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
-            flex: 1, minWidth: 0
+            flex: 1, minWidth: 0, boxSizing: "border-box"
           }}
         >
           {c.nav.map((n, i) => (
