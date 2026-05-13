@@ -207,7 +207,7 @@ export default function Home() {
         <div style={{ borderRadius: 24, overflow: "hidden", border: "1px solid var(--surface-border)", background: "rgba(15, 17, 25, 0.4)", backdropFilter: "blur(20px)" }}>
           {c.timeline.items.map((it, i) => (
             <div key={i} className="roadmap-item" style={{
-              padding: "26px 32px", display: "grid", gridTemplateColumns: "100px 140px 1fr 1.2fr 60px", gap: 24,
+              padding: "24px", display: "grid", gap: 24,
               alignItems: "center", borderTop: i ? `1px solid var(--surface-border)` : "none",
             }}>
               <div className="roadmap-year" style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 700, background: "var(--grad)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{it.year}</div>

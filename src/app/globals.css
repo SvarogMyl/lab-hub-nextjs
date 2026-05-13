@@ -95,17 +95,24 @@ body {
     display: none !important;
   }
   
-  /* Roadmap Mobile */
+  /* Roadmap */
   .roadmap-item {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
-    text-align: left !important;
+    grid-template-columns: 100px 140px 1fr 1.2fr 60px;
   }
-  .roadmap-year {
-    font-size: 24px !important;
-  }
-  .roadmap-arrow {
-    display: none !important;
+
+  /* Roadmap Mobile */
+  @media (max-width: 1024px) {
+    .roadmap-item {
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+      text-align: left !important;
+    }
+    .roadmap-year {
+      font-size: 28px !important;
+    }
+    .roadmap-arrow {
+      display: none !important;
+    }
   }
 }
 
