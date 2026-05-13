@@ -21,12 +21,13 @@ export default function Navigation() {
   return (
     <header style={{ 
       position: "fixed", top: 12, left: 0, right: 0, zIndex: 100,
-      display: "flex", justifyContent: "center", padding: "0 var(--side-pad)",
-      pointerEvents: "none", transition: "all 0.3s ease"
+      display: "flex", justifyContent: "center", padding: "0 12px",
+      pointerEvents: "none", width: "100%"
     }}>
       <div style={{
         display: "flex", alignItems: "center", gap: 8, pointerEvents: "auto",
-        maxWidth: "100%", background: scrolled ? "rgba(8, 9, 15, 0.4)" : "transparent",
+        width: "100%", maxWidth: 600, // Constrain on desktop, but full width on mobile
+        background: scrolled ? "rgba(8, 9, 15, 0.4)" : "transparent",
         borderRadius: 99, padding: scrolled ? "4px 8px" : "0",
         backdropFilter: scrolled ? "blur(12px)" : "none",
         transition: "all 0.3s ease"
@@ -49,7 +50,7 @@ export default function Navigation() {
         <nav 
           className="nav-pill no-scrollbar"
           style={{
-            display: "flex", gap: 2, padding: 4, position: "relative",
+            display: "flex", gap: 0, padding: 2, position: "relative",
             background: "rgba(15, 17, 25, 0.8)", border: "1px solid var(--surface-border)", 
             borderRadius: 99, backdropFilter: "blur(24px)",
             overflowX: "auto", whiteSpace: "nowrap", WebkitOverflowScrolling: "touch",
@@ -64,12 +65,12 @@ export default function Navigation() {
               onMouseEnter={() => setHoverIdx(i)}
               onMouseLeave={() => setHoverIdx(null)}
               style={{
-                padding: "8px 16px", borderRadius: 99, textDecoration: "none",
+                padding: "8px 14px", borderRadius: 99, textDecoration: "none",
                 color: hoverIdx === i ? "var(--bg)" : "var(--text)",
                 background: hoverIdx === i ? "var(--grad)" : "transparent",
-                fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600, 
+                fontFamily: "var(--font-body)", fontSize: 11, fontWeight: 600, 
                 cursor: "pointer", transition: "color .25s, background .25s",
-                display: "inline-block"
+                display: "inline-block", flexShrink: 0
               }}
             >{n.label}</a>
           ))}
