@@ -53,7 +53,8 @@ export default function Navigation() {
             background: "rgba(15, 17, 25, 0.8)", border: "1px solid var(--surface-border)", 
             borderRadius: 99, backdropFilter: "blur(24px)",
             overflowX: "auto", whiteSpace: "nowrap", WebkitOverflowScrolling: "touch",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.4)"
+            boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+            flex: 1, minWidth: 0
           }}
         >
           {c.nav.map((n, i) => (
