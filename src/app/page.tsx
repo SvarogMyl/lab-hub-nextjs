@@ -22,7 +22,7 @@ export default function Home() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_CORE_API_URL || 'http://localhost:3001';
+        const apiUrl = process.env.NEXT_PUBLIC_CORE_API_URL || 'https://lab-core-node.onrender.com';
         const res = await fetch(`${apiUrl}/projects`);
         if (!res.ok) throw new Error("API falló");
         const data = await res.json();
