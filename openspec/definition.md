@@ -19,5 +19,21 @@ Este proyecto sirve como el Portal Central (Hub) del ecosistema de laboratorio. 
 2. `LiveTick`: Falsifica/muestra latencias variables (telemetría) para un aspecto técnico "en vivo".
 3. `HoloCard` / `HoloButton`: Bloques base del sistema de diseño, con bordes y gradientes translúcidos.
 
-## 🌐 Variables de Entorno
-- `NEXT_PUBLIC_CORE_API_URL`: Apunta a la instancia viva de la API (ej: `https://lab-core-node.onrender.com`).
+- `NEXT_PUBLIC_CORE_API_URL`: Apunta a la instancia viva de la API.
+  > [!IMPORTANT]
+  > Las variables `NEXT_PUBLIC_` en Next.js se inyectan en el cliente durante el **Build Time**. Si se cambian en el panel de Cloudflare, se requiere un redeploy manual del proyecto para que los cambios surtan efecto en el navegador.
+
+## 🧠 Hallazgos y Soluciones
+1. **Variables de Entorno en Cloudflare**: 
+   - *Hallazgo*: Cambiar una variable en el panel no afecta al sitio vivo de inmediato. 
+   - *Solución*: Implementar un fallback en el código (`apiUrl || 'https://...'`) y disparar un redeploy manual después de configurar la variable.
+2. **Resiliencia a Errores de API**: 
+   - *Hallazgo*: El navegador puede devolver errores 500 temporales durante despliegues de backend.
+   - *Solución*: Uso de bloques `try-catch` en `useEffect` que regresan automáticamente a la data estática de `content.ts` si la red falla.
+
+---
+
+## 🔮 Mejoras Pendientes (Future Lab)
+1. **Paginación y Filtros**: Implementar búsqueda dinámica desde el backend para el catálogo de proyectos.
+2. **Auth Flow Completo**: Conectar el `Chatbot` con la API de login para permitir la administración de proyectos desde el propio portal.
+3. **Automatización**: Configurar `wrangler` con un token de API para permitir despliegues desde terminal/CI.
