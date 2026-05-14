@@ -116,6 +116,18 @@ export const CONTENT = {
         { year: "2027", title: "Global Scale", org: "Blockchain · Rust", body: "Multi-region deployment and medicinal traceability with Blockchain." },
       ],
     },
+    bot: {
+      title: "Svarog AI",
+      sub: "Online - Ready to assist",
+      greeting: "Hello, I am the Svarog AI Assistant. How can I help you navigate the Lab?",
+      placeholder: "Ask something...",
+      send: "Send",
+      suggestions: ["What is Svarog?", "What stack is this?"],
+      answers: {
+        "What is Svarog?": "Svarog is an advanced AI coding assistant.",
+        "What stack is this?": "This is built with Next.js, TypeScript, and the Holo Design System."
+      }
+    }
   },
   es: {
     nav: [
@@ -234,5 +246,17 @@ export const CONTENT = {
         { year: "2027", title: "Global Scale", org: "Blockchain · Rust", body: "Despliegue multi-región y trazabilidad inmutable de medicamentos con Blockchain." },
       ],
     },
+    bot: {
+      title: "Svarog AI",
+      sub: "En línea - Listo para ayudar",
+      greeting: "Hola, soy el Asistente AI Svarog. ¿Cómo puedo ayudarte a navegar el Lab?",
+      placeholder: "Escribe algo...",
+      send: "Enviar",
+      suggestions: ["¿Qué es Svarog?", "¿Qué stack es este?"],
+      answers: {
+        "¿Qué es Svarog?": "Svarog es un asistente avanzado de código IA.",
+        "¿Qué stack es este?": "Está construido con Next.js, TypeScript y el Holo Design System."
+      }
+    }
   },
 };

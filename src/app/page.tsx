@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { CONTENT } from "@/constants/content";
 import Navigation from "@/components/layout/Navigation";
@@ -15,6 +15,41 @@ import TimelineSpark from "@/components/visuals/TimelineSpark";
 export default function Home() {
   const { lang } = useLanguage();
   const c = CONTENT[lang];
+
+  const [projects, setProjects] = useState(c.projects.items);
+  const [loadingProjects, setLoadingProjects] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_CORE_API_URL || 'http://localhost:3001';
+        const res = await fetch(`${apiUrl}/projects`);
+        if (!res.ok) throw new Error("API falló");
+        const data = await res.json();
+        
+        // Map API data to the frontend shape
+        const mapped = data.map((p: any) => ({
+          id: p.id.split('-')[0].substring(0, 4).toUpperCase(), // Just a short hash for aesthetics
+          name: p.title,
+          kind: p.tech_stack?.join(" · ") || "backend",
+          year: new Date(p.createdAt || new Date()).getFullYear().toString(),
+          desc: lang === 'es' ? p.description_es : p.description_en,
+          tag: p.status,
+          github: p.repo_url,
+          live: p.live_url,
+          docs: p.docs_url
+        }));
+        
+        setProjects(mapped.length > 0 ? mapped : c.projects.items);
+      } catch (err) {
+        console.error("Error fetching projects, falling back to static", err);
+        setProjects(c.projects.items);
+      } finally {
+        setLoadingProjects(false);
+      }
+    };
+    fetchProjects();
+  }, [lang, c.projects.items]);
 
   return (
     <div style={{ width: "100%", minHeight: "100%", position: "relative" }}>
@@ -140,7 +175,7 @@ export default function Home() {
           </div>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 360px), 1fr))", gap: 18 }}>
-          {c.projects.items.map((p, i) => (
+          {projects.map((p: any, i: number) => (
             <HoloCard key={p.id} padding={0}>
               <div style={{ padding: 22, display: "flex", flexDirection: "column", minHeight: 450 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
