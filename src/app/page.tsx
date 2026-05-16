@@ -16,7 +16,7 @@ export default function Home() {
   const { lang } = useLanguage();
   const c = CONTENT[lang];
 
-  const [projects, setProjects] = useState(c.projects.items);
+  const [projects, setProjects] = useState<any[]>([]);
   const [loadingProjects, setLoadingProjects] = useState(true);
 
   useEffect(() => {
@@ -37,7 +37,8 @@ export default function Home() {
           tag: p.status,
           github: p.repo_url,
           live: p.live_url,
-          docs: p.docs_url
+          docs: p.docs_url,
+          category: p.category || 'OTHER'
         }));
         
         setProjects(mapped.length > 0 ? mapped : c.projects.items);
@@ -50,6 +51,9 @@ export default function Home() {
     };
     fetchProjects();
   }, [lang, c.projects.items]);
+
+  // Grouping logic
+  const categories = Array.from(new Set(projects.map((p: any) => p.category))).sort();
 
   return (
     <div style={{ width: "100%", minHeight: "100%", position: "relative" }}>
@@ -174,39 +178,60 @@ export default function Home() {
             <p style={{ color: "var(--dim)", marginTop: 8 }}>{c.projects.sub}</p>
           </div>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 360px), 1fr))", gap: 18 }}>
-          {projects.map((p: any, i: number) => (
-            <HoloCard key={p.id} padding={0}>
-              <div style={{ padding: 22, display: "flex", flexDirection: "column", minHeight: 450 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--dim)", letterSpacing: 1 }}>{p.id} · {p.year}</span>
-                  <span style={{ padding: "3px 10px", borderRadius: 99, background: `rgba(34, 211, 238, 0.1)`, color: "var(--cya)", fontSize: 10, fontWeight: 700, fontFamily: "var(--font-mono)", letterSpacing: 1 }}>{p.tag}</span>
-                </div>
+
+        {loadingProjects && projects.length === 0 ? (
+          <div style={{ padding: 40, textAlign: "center", color: "var(--dim)", fontFamily: "var(--font-mono)" }}>
+            // synchronization_in_progress...
+          </div>
+        ) : (
+          <div style={{ display: "flex", flexDirection: "column", gap: 64 }}>
+            {categories.map((cat) => (
+              <div key={cat} style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                 <div style={{ 
-                  marginTop: 16, height: 160, borderRadius: 14, position: "relative", overflow: "hidden",
-                  background: `rgba(255, 255, 255, 0.03)`, border: `1px solid var(--surface-border)`,
+                  display: "flex", alignItems: "center", gap: 16, 
+                  fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--cya)", 
+                  letterSpacing: 3, textTransform: "uppercase" 
                 }}>
-                  <ProjectPreview kind={p.kind} />
+                  <span>{cat}</span>
+                  <div style={{ flex: 1, height: 1, background: "linear-gradient(90deg, rgba(34, 211, 238, 0.2), transparent)" }} />
                 </div>
-                <h3 style={{ marginTop: 20, marginBottom: 6, fontFamily: "var(--font-display)", fontSize: 26, fontWeight: 700, letterSpacing: -0.8 }}>{p.name}</h3>
-                <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--dim)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 12 }}>{p.kind}</div>
-                <p style={{ color: "var(--dim)", fontSize: 13.5, lineHeight: 1.55, margin: 0, flex: 1, textWrap: "pretty" }}>{p.desc}</p>
-                
-                <div style={{ marginTop: 18, paddingTop: 14, borderTop: `1px solid var(--surface-border)`, display: "flex", gap: 12, alignItems: "center" }}>
-                  {p.github && (
-                    <a href={p.github} target="_blank" rel="noopener noreferrer" style={{ color: "var(--lav)", fontSize: 12, textDecoration: "none", fontWeight: 500 }}>GitHub</a>
-                  )}
-                  {p.live && (
-                    <a href={p.live} target="_blank" rel="noopener noreferrer" style={{ color: "var(--cya)", fontSize: 12, textDecoration: "none", fontWeight: 500 }}>Live Demo</a>
-                  )}
-                  {p.docs && (
-                    <a href={p.docs} target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)", fontSize: 12, textDecoration: "none", fontWeight: 500 }}>API Docs</a>
-                  )}
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 360px), 1fr))", gap: 18 }}>
+                  {projects.filter(p => p.category === cat).map((p: any) => (
+                    <HoloCard key={p.id} padding={0}>
+                      <div style={{ padding: 22, display: "flex", flexDirection: "column", minHeight: 450 }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                          <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--dim)", letterSpacing: 1 }}>{p.id} · {p.year}</span>
+                          <span style={{ padding: "3px 10px", borderRadius: 99, background: `rgba(34, 211, 238, 0.1)`, color: "var(--cya)", fontSize: 10, fontWeight: 700, fontFamily: "var(--font-mono)", letterSpacing: 1 }}>{p.tag}</span>
+                        </div>
+                        <div style={{ 
+                          marginTop: 16, height: 160, borderRadius: 14, position: "relative", overflow: "hidden",
+                          background: `rgba(255, 255, 255, 0.03)`, border: `1px solid var(--surface-border)`,
+                        }}>
+                          <ProjectPreview kind={p.kind} />
+                        </div>
+                        <h3 style={{ marginTop: 20, marginBottom: 6, fontFamily: "var(--font-display)", fontSize: 26, fontWeight: 700, letterSpacing: -0.8 }}>{p.name}</h3>
+                        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--dim)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 12 }}>{p.kind}</div>
+                        <p style={{ color: "var(--dim)", fontSize: 13.5, lineHeight: 1.55, margin: 0, flex: 1, textWrap: "pretty" }}>{p.desc}</p>
+                        
+                        <div style={{ marginTop: 18, paddingTop: 14, borderTop: `1px solid var(--surface-border)`, display: "flex", gap: 12, alignItems: "center" }}>
+                          {p.github && (
+                            <a href={p.github} target="_blank" rel="noopener noreferrer" style={{ color: "var(--lav)", fontSize: 12, textDecoration: "none", fontWeight: 500 }}>GitHub</a>
+                          )}
+                          {p.live && (
+                            <a href={p.live} target="_blank" rel="noopener noreferrer" style={{ color: "var(--cya)", fontSize: 12, textDecoration: "none", fontWeight: 500 }}>Live Demo</a>
+                          )}
+                          {p.docs && (
+                            <a href={p.docs} target="_blank" rel="noopener noreferrer" style={{ color: "var(--text)", fontSize: 12, textDecoration: "none", fontWeight: 500 }}>API Docs</a>
+                          )}
+                        </div>
+                      </div>
+                    </HoloCard>
+                  ))}
                 </div>
               </div>
-            </HoloCard>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* ===== STACK (INFRASTRUCTURE) ===== */}
@@ -216,12 +241,12 @@ export default function Home() {
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: 56, fontWeight: 700, letterSpacing: -2, margin: 0 }}>{c.stack.title}</h2>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 18 }}>
-          {c.stack.groups.map((g, gi) => (
+          {c.stack.groups.map((g: any, gi: number) => (
             <HoloCard key={g.label} padding={22}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 700, color: "var(--lav)", marginBottom: 4 }}>0{gi + 1}</div>
               <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--dim)", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 14 }}>{g.label}</div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                {g.items.map(i => (
+                {g.items.map((i: string) => (
                   <span key={i} style={{
                     padding: "5px 10px", borderRadius: 99, fontFamily: "var(--font-mono)", fontSize: 12,
                     background: `rgba(165, 180, 252, 0.1)`, color: "var(--text)", border: `1px solid rgba(165, 180, 252, 0.2)`,
@@ -240,7 +265,7 @@ export default function Home() {
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: 56, fontWeight: 700, letterSpacing: -2, margin: 0 }}>{c.timeline.title}</h2>
         </div>
         <div style={{ borderRadius: 24, overflow: "hidden", border: "1px solid var(--surface-border)", background: "rgba(15, 17, 25, 0.4)", backdropFilter: "blur(20px)" }}>
-          {c.timeline.items.map((it, i) => (
+          {c.timeline.items.map((it: any, i: number) => (
             <div key={i} className="roadmap-item" style={{
               padding: "24px", display: "grid", gap: 24,
               alignItems: "center", borderTop: i ? `1px solid var(--surface-border)` : "none",
