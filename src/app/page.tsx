@@ -38,7 +38,8 @@ export default function Home() {
           github: p.repo_url,
           live: p.live_url,
           docs: p.docs_url,
-          category: p.category || 'OTHER'
+          category: p.category || 'OTHER',
+          hosting: p.hosting || 'None'
         }));
         
         setProjects(mapped.length > 0 ? mapped : c.projects.items);
@@ -201,7 +202,23 @@ export default function Home() {
                       <div style={{ padding: 22, display: "flex", flexDirection: "column", minHeight: 450 }}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                           <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--dim)", letterSpacing: 1 }}>{p.id} · {p.year}</span>
-                          <span style={{ padding: "3px 10px", borderRadius: 99, background: `rgba(34, 211, 238, 0.1)`, color: "var(--cya)", fontSize: 10, fontWeight: 700, fontFamily: "var(--font-mono)", letterSpacing: 1 }}>{p.tag}</span>
+                          <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                            {p.hosting && p.hosting !== 'None' && (
+                              <span style={{ 
+                                padding: "3px 8px", 
+                                borderRadius: 99, 
+                                background: "rgba(148, 163, 184, 0.1)", 
+                                border: "1px solid rgba(148, 163, 184, 0.2)", 
+                                color: "var(--text)", 
+                                fontSize: 9, 
+                                fontWeight: 700, 
+                                fontFamily: "var(--font-mono)", 
+                                letterSpacing: 1,
+                                textTransform: "uppercase"
+                              }}>{p.hosting}</span>
+                            )}
+                            <span style={{ padding: "3px 10px", borderRadius: 99, background: `rgba(34, 211, 238, 0.1)`, color: "var(--cya)", fontSize: 10, fontWeight: 700, fontFamily: "var(--font-mono)", letterSpacing: 1 }}>{p.tag}</span>
+                          </div>
                         </div>
                         <div style={{ 
                           marginTop: 16, height: 160, borderRadius: 14, position: "relative", overflow: "hidden",
