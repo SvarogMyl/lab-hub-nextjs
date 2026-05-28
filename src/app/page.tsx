@@ -28,24 +28,52 @@ export default function Home() {
         const data = await res.json();
         
         // Map API data to the frontend shape
-        const mapped = data.map((p: any) => ({
-          id: p.id.split('-')[0].substring(0, 4).toUpperCase(), // Just a short hash for aesthetics
-          name: p.title,
-          kind: p.tech_stack?.join(" · ") || "backend",
-          year: new Date(p.createdAt || new Date()).getFullYear().toString(),
-          desc: lang === 'es' ? p.description_es : p.description_en,
-          tag: p.status,
-          github: p.repo_url,
-          live: p.live_url,
-          docs: p.docs_url,
-          category: p.category || 'OTHER',
-          hosting: p.hosting || 'None'
-        }));
-        
-        setProjects(mapped.length > 0 ? mapped : c.projects.items);
+        const processData = (rawData: any[]) => {
+          return rawData.map((p: any) => ({
+            id: p.id.split('-')[0].substring(0, 4).toUpperCase(), // Just a short hash for aesthetics
+            name: p.title,
+            kind: p.tech_stack?.join(" · ") || "backend",
+            year: new Date(p.createdAt || new Date()).getFullYear().toString(),
+            desc: lang === 'es' ? p.description_es : p.description_en,
+            tag: p.status,
+            github: p.repo_url,
+            live: p.live_url,
+            docs: p.docs_url,
+            category: p.category || 'OTHER',
+            hosting: p.hosting || 'None'
+          }));
+        };
+
+        setProjects(processData(data));
       } catch (err) {
-        console.error("Error fetching projects, falling back to static", err);
-        setProjects(c.projects.items);
+        console.error("Error fetching projects from API, falling back to static json", err);
+        try {
+          const fallbackRes = await fetch("/fallback_projects.json");
+          if (fallbackRes.ok) {
+            const fallbackData = await fallbackRes.json();
+            
+            const processData = (rawData: any[]) => {
+              return rawData.map((p: any) => ({
+                id: p.id.split('-')[0].substring(0, 4).toUpperCase(), // Just a short hash for aesthetics
+                name: p.title,
+                kind: p.tech_stack?.join(" · ") || "backend",
+                year: new Date(p.createdAt || new Date()).getFullYear().toString(),
+                desc: lang === 'es' ? p.description_es : p.description_en,
+                tag: p.status,
+                github: p.repo_url,
+                live: p.live_url,
+                docs: p.docs_url,
+                category: p.category || 'OTHER',
+                hosting: p.hosting || 'None'
+              }));
+            };
+            setProjects(processData(fallbackData));
+          } else {
+            setProjects(c.projects.items); // Extreme fallback
+          }
+        } catch(fallbackErr) {
+          setProjects(c.projects.items); // Extreme fallback
+        }
       } finally {
         setLoadingProjects(false);
       }
