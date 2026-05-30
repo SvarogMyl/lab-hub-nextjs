@@ -37,20 +37,20 @@ export const CONTENT = {
           github: "https://github.com/SvarogMyl/lab-hub-nextjs",
           live: "https://lab-hub-nextjs.yannickvalderasm.workers.dev/"
         },
-        { 
-          id: "02", name: "Backend Core", kind: "java · spring", year: "2026", 
-          desc: "Main service handling item management and catalog. Connected to Supabase and PostgreSQL.", 
+        {
+          id: "02", name: "Backend Core", kind: "java · spring", year: "2026",
+          desc: "Main service handling item management and catalog. Running on Oracle Cloud with local PostgreSQL.",
           tag: "LIVE",
           github: "https://github.com/SvarogMyl/lab-spring-postgres",
-          live: "https://lab-spring-postgres.onrender.com/health",
-          docs: "https://lab-spring-postgres.onrender.com/swagger-ui/index.html"
+          live: "https://spring.165.1.125.187.nip.io/health",
+          docs: "https://spring.165.1.125.187.nip.io/swagger-ui/index.html"
         },
-        { 
-          id: "03", name: "Lab Monitor", kind: "node.js · express", year: "2026", 
-          desc: "Ecosystem watchdog. Performs periodic health-checks and keeps services awake.", 
+        {
+          id: "03", name: "Lab Monitor", kind: "node.js · express", year: "2026",
+          desc: "Ecosystem watchdog. Performs periodic health-checks across all services.",
           tag: "LIVE",
           github: "https://github.com/SvarogMyl/lab-monitor-service",
-          live: "https://lab-monitor-service.onrender.com/"
+          live: "https://monitor.165.1.125.187.nip.io/"
         },
         { 
           id: "04", name: "Holo Template", kind: "next.js · oss", year: "2026", 
@@ -82,7 +82,7 @@ export const CONTENT = {
       tag: "// tech_manifest",
       title: "The Stack",
       groups: [
-        { label: "cloud providers", items: ["Cloudflare", "Render", "Vercel", "Supabase", "AWS"] },
+        { label: "cloud providers", items: ["Oracle Cloud", "Cloudflare", "Vercel", "Docker", "GitHub Actions"] },
         { label: "core languages", items: ["Java 21", "Node.js 20", "Go 1.22", "Python 3.10", "TypeScript"] },
         { label: "storage", items: ["PostgreSQL", "Redis", "DuckDB"] },
         { label: "devops", items: ["Docker", "GitHub Actions", "Terraform"] },
@@ -109,7 +109,7 @@ export const CONTENT = {
       tag: "// evolution",
       title: "Roadmap",
       items: [
-        { year: "Q1 2026", title: "Foundation", org: "Spring Boot · Supabase", body: "Base structure and initial deployment on Render." },
+        { year: "Q1 2026", title: "Foundation", org: "Spring Boot · PostgreSQL", body: "Base structure and initial deployment. Migration to Oracle Cloud completed Q2." },
         { year: "Q2 2026", title: "Observability", org: "Node.js · Express", body: "Implementation of the Monitor Service and real-time health dashboard." },
         { year: "NOW", title: "Performance & Hub", org: "Go · Next.js", body: "Migration of critical services to Go and creation of the Centralized Hub." },
         { year: "Q4 2026", title: "Intelligent Ecosystem", org: "LLM · Agents", body: "Integration of smart agents for predictive analysis and semantic search." },
@@ -167,20 +167,20 @@ export const CONTENT = {
           github: "https://github.com/SvarogMyl/lab-hub-nextjs",
           live: "https://lab-hub-nextjs.yannickvalderasm.workers.dev/"
         },
-        { 
-          id: "02", name: "Backend Core", kind: "java · spring", year: "2026", 
-          desc: "Servicio principal encargado de la gestión de ítems y catálogo. Conectado a Supabase y PostgreSQL.", 
+        {
+          id: "02", name: "Backend Core", kind: "java · spring", year: "2026",
+          desc: "Servicio principal encargado de la gestión de ítems y catálogo. Corriendo en Oracle Cloud con PostgreSQL local.",
           tag: "LIVE",
           github: "https://github.com/SvarogMyl/lab-spring-postgres",
-          live: "https://lab-spring-postgres.onrender.com/health",
-          docs: "https://lab-spring-postgres.onrender.com/swagger-ui/index.html"
+          live: "https://spring.165.1.125.187.nip.io/health",
+          docs: "https://spring.165.1.125.187.nip.io/swagger-ui/index.html"
         },
-        { 
-          id: "03", name: "Lab Monitor", kind: "node.js · express", year: "2026", 
-          desc: "Vigilante del ecosistema. Realiza health-checks periódicos y mantiene los servicios despiertos.", 
+        {
+          id: "03", name: "Lab Monitor", kind: "node.js · express", year: "2026",
+          desc: "Vigilante del ecosistema. Realiza health-checks periódicos sobre todos los servicios.",
           tag: "LIVE",
           github: "https://github.com/SvarogMyl/lab-monitor-service",
-          live: "https://lab-monitor-service.onrender.com/"
+          live: "https://monitor.165.1.125.187.nip.io/"
         },
         { 
           id: "04", name: "Holo Template", kind: "next.js · oss", year: "2026", 
@@ -212,7 +212,7 @@ export const CONTENT = {
       tag: "// manifiesto_tech",
       title: "El Stack",
       groups: [
-        { label: "cloud providers", items: ["Cloudflare", "Render", "Vercel", "Supabase", "AWS"] },
+        { label: "cloud providers", items: ["Oracle Cloud", "Cloudflare", "Vercel", "Docker", "GitHub Actions"] },
         { label: "lenguajes core", items: ["Java 21", "Node.js 20", "Go 1.22", "Python 3.10", "TypeScript"] },
         { label: "almacenamiento", items: ["PostgreSQL", "Redis", "DuckDB"] },
         { label: "devops", items: ["Docker", "GitHub Actions", "Terraform"] },
