@@ -87,12 +87,26 @@ body {
   .nav-pill {
     padding: 2px !important;
     gap: 0 !important;
-    max-width: calc(100vw - 80px); /* Leave room for lang button */
+    max-width: calc(100vw - 72px); /* 24px margins + 8px gap + 40px lang button */
+    position: relative;
+  }
+  /* Fade gradient to signal horizontal scroll */
+  .nav-pill::after {
+    content: '';
+    position: sticky;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 24px;
+    flex-shrink: 0;
+    background: linear-gradient(to right, transparent, rgba(15, 17, 25, 0.9));
+    pointer-events: none;
+    border-radius: 0 99px 99px 0;
   }
   .nav-pill a {
-    padding: 6px 10px !important;
-    font-size: 10.5px !important;
-    letter-spacing: -0.2px;
+    padding: 6px 9px !important;
+    font-size: 10px !important;
+    letter-spacing: -0.3px;
   }
   .nav-logo {
     display: none !important;
@@ -125,6 +139,10 @@ body {
   }
   .section-title {
     font-size: 32px !important;
+  }
+  .nav-pill a {
+    padding: 5px 7px !important;
+    font-size: 9.5px !important;
   }
 }
 
