@@ -76,8 +76,21 @@ export default function Navigation() {
           ))}
         </nav>
 
+        {/* Admin Link */}
+        <a
+          href="/admin"
+          style={{
+            width: 40, height: 40, borderRadius: "50%", flexShrink: 0,
+            border: "1px solid var(--surface-border)", background: "rgba(15, 17, 25, 0.8)",
+            color: "var(--lav)", fontFamily: "var(--font-mono)", fontSize: 9,
+            textDecoration: "none", backdropFilter: "blur(24px)", display: "flex",
+            alignItems: "center", justifyContent: "center", fontWeight: 700,
+            boxShadow: "0 8px 32px rgba(0,0,0,0.4)", letterSpacing: 0.5,
+          }}
+        >ADM</a>
+
         {/* Lang Toggle */}
-        <button 
+        <button
           onClick={toggleLang}
           style={{
             width: 40, height: 40, borderRadius: "50%", flexShrink: 0,
