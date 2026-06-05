@@ -22,7 +22,5 @@
   "observability": {
     "enabled": true
   },
-  "routes": [
-    { "pattern": "hub.svasoft.cl", "custom_domain": true }
-  ]
+  "workers_dev": false
 }

@@ -30,59 +30,25 @@ export const CONTENT = {
       title: "Ecosystem Projects",
       sub: "Active services and pipelines in production.",
       items: [
-        { 
-          id: "01", name: "Lab Hub (Next.js)", kind: "next.js · cloudflare", year: "2026", 
-          desc: "Drug catalog and item management dashboard with premium aesthetics and optimized UX.", 
-          tag: "LIVE",
-          github: "https://github.com/SvarogMyl/lab-hub-nextjs",
-          live: "https://lab-hub-nextjs.yannickvalderasm.workers.dev/"
-        },
-        {
-          id: "02", name: "Backend Core", kind: "java · spring", year: "2026",
-          desc: "Main service handling item management and catalog. Running on Oracle Cloud with local PostgreSQL.",
-          tag: "LIVE",
-          github: "https://github.com/SvarogMyl/lab-spring-postgres",
-          live: "https://spring.165.1.125.187.nip.io/health",
-          docs: "https://spring.165.1.125.187.nip.io/swagger-ui/index.html"
-        },
-        {
-          id: "03", name: "Lab Monitor", kind: "node.js · express", year: "2026",
-          desc: "Ecosystem watchdog. Performs periodic health-checks across all services.",
-          tag: "LIVE",
-          github: "https://github.com/SvarogMyl/lab-monitor-service",
-          live: "https://monitor.165.1.125.187.nip.io/"
-        },
-        { 
-          id: "04", name: "Holo Template", kind: "next.js · oss", year: "2026", 
-          desc: "Reusable template based on the Holo Design System. Built-in multi-language, glassmorphism, and research components.", 
-          tag: "OSS",
-          github: "https://github.com/SvarogMyl/lab-template-holo"
-        },
-        { 
-          id: "05", name: "Lab Hub (React)", kind: "react · vite", year: "2026", 
-          desc: "The legacy version of the portal. Useful for feature parity checks and historical reference.", 
-          tag: "LEGACY",
-          github: "https://github.com/SvarogMyl/lab-hub-react",
-          live: "https://lab-hub-react.vercel.app/"
-        },
-        { 
-          id: "06", name: "Data Service", kind: "python · pandas", year: "2026", 
-          desc: "Automated pipeline syncing data from Master Excel to JSON for the catalog.", 
-          tag: "LIVE",
-          github: "https://github.com/SvarogMyl/lab-data-service"
-        },
-        { 
-          id: "07", name: "Auth Service", kind: "go · gin", year: "2026", 
-          desc: "High-availability microservice for identity and permission management.", 
-          tag: "PENDING"
-        },
+        { id: "01", name: "Svarog Web", kind: "next.js · cloudflare", year: "2026", desc: "Commercial portal for the Svarog EcoSystem. Landing, Google OAuth login and SSO to news-admin.", tag: "LIVE", github: "https://github.com/SvarogMyl/svarog-web", live: "https://svasoft.cl" },
+        { id: "02", name: "Lab Hub (Next.js)", kind: "next.js · cloudflare", year: "2026", desc: "Modern central portal with i18n, TypeScript and Holo design system.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-hub-nextjs", live: "https://hub.svasoft.cl" },
+        { id: "03", name: "Store (Spring Boot)", kind: "next.js · spring boot", year: "2026", desc: "Full-stack product catalog. Next.js consuming Spring Boot REST API. Item CRUD with pagination and JWT.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-frontend-nextjs", live: "https://store.svasoft.cl" },
+        { id: "04", name: "Lab Hub (React)", kind: "react · vite", year: "2026", desc: "Legacy version of the central portal in plain React.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-hub-react", live: "https://lab-hub-react.pages.dev" },
+        { id: "05", name: "Backend Core (Node.js)", kind: "node.js · prisma", year: "2026", desc: "Central API unifying data and projects across the ecosystem.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-core-node", live: "https://api.svasoft.cl" },
+        { id: "06", name: "Lab Spring Postgres", kind: "java · spring boot", year: "2026", desc: "Robust Java backend with Spring Boot and PostgreSQL.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-spring-postgres", live: "https://spring.svasoft.cl", docs: "https://spring.svasoft.cl/swagger-ui/index.html" },
+        { id: "07", name: "Auth Service", kind: "go · gin", year: "2026", desc: "Central IdP for the ecosystem. Register, login and JWT validation.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-auth-service", live: "https://auth.svasoft.cl" },
+        { id: "08", name: "News Service", kind: "node.js · prisma · r2", year: "2026", desc: "Multi-tenant SaaS API for news management with Cloudflare R2 storage.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-news-service", live: "https://news.svasoft.cl" },
+        { id: "09", name: "Mail Service", kind: "python · fastapi · rabbitmq", year: "2026", desc: "Email microservice with FastAPI, RabbitMQ and Brevo.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-mail-service", live: "https://mail.svasoft.cl" },
+        { id: "10", name: "Monitor Service", kind: "node.js · express", year: "2026", desc: "Ecosystem keep-alive. Pings all services every 5 minutes.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-monitor-service", live: "https://monitor.svasoft.cl" },
+        { id: "11", name: "Data Service", kind: "python · pandas", year: "2026", desc: "Automated Excel to JSON conversion pipeline.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-data-service" },
+        { id: "12", name: "Holo Template", kind: "react · css · oss", year: "2026", desc: "Reusable CSS/React design system for the ecosystem. Open source.", tag: "OSS", github: "https://github.com/SvarogMyl/lab-template-holo" },
       ],
     },
     stack: {
       tag: "// tech_manifest",
       title: "The Stack",
       groups: [
-        { label: "cloud providers", items: ["Oracle Cloud", "Cloudflare", "Vercel", "Docker", "GitHub Actions"] },
+        { label: "cloud providers", items: ["Oracle Cloud", "Cloudflare", "Docker", "GitHub Actions"] },
         { label: "core languages", items: ["Java 21", "Node.js 20", "Go 1.22", "Python 3.10", "TypeScript"] },
         { label: "storage", items: ["PostgreSQL", "Redis", "DuckDB"] },
         { label: "devops", items: ["Docker", "GitHub Actions", "Terraform"] },
@@ -160,59 +126,25 @@ export const CONTENT = {
       title: "Proyectos del Lab",
       sub: "Servicios activos y pipelines en producción.",
       items: [
-        { 
-          id: "01", name: "Lab Hub (Next.js)", kind: "next.js · cloudflare", year: "2026", 
-          desc: "Catálogo de medicamentos y dashboard de gestión de ítems con estética premium y UX optimizada.", 
-          tag: "LIVE",
-          github: "https://github.com/SvarogMyl/lab-hub-nextjs",
-          live: "https://lab-hub-nextjs.yannickvalderasm.workers.dev/"
-        },
-        {
-          id: "02", name: "Backend Core", kind: "java · spring", year: "2026",
-          desc: "Servicio principal encargado de la gestión de ítems y catálogo. Corriendo en Oracle Cloud con PostgreSQL local.",
-          tag: "LIVE",
-          github: "https://github.com/SvarogMyl/lab-spring-postgres",
-          live: "https://spring.165.1.125.187.nip.io/health",
-          docs: "https://spring.165.1.125.187.nip.io/swagger-ui/index.html"
-        },
-        {
-          id: "03", name: "Lab Monitor", kind: "node.js · express", year: "2026",
-          desc: "Vigilante del ecosistema. Realiza health-checks periódicos sobre todos los servicios.",
-          tag: "LIVE",
-          github: "https://github.com/SvarogMyl/lab-monitor-service",
-          live: "https://monitor.165.1.125.187.nip.io/"
-        },
-        { 
-          id: "04", name: "Holo Template", kind: "next.js · oss", year: "2026", 
-          desc: "Plantilla reutilizable basada en el Holo Design System. Con i18n, glassmorphism y componentes de investigación.", 
-          tag: "OSS",
-          github: "https://github.com/SvarogMyl/lab-template-holo"
-        },
-        { 
-          id: "05", name: "Lab Hub (React)", kind: "react · vite", year: "2026", 
-          desc: "Versión legacy del portal. Útil para verificar paridad de funciones y referencia histórica.", 
-          tag: "LEGACY",
-          github: "https://github.com/SvarogMyl/lab-hub-react",
-          live: "https://lab-hub-react.vercel.app/"
-        },
-        { 
-          id: "06", name: "Data Service", kind: "python · pandas", year: "2026", 
-          desc: "Pipeline automatizado que sincroniza datos desde Excel Maestro a JSON para el catálogo.", 
-          tag: "LIVE",
-          github: "https://github.com/SvarogMyl/lab-data-service"
-        },
-        { 
-          id: "07", name: "Auth Service", kind: "go · gin", year: "2026", 
-          desc: "Próximamente: Microservicio de alta disponibilidad para gestión de identidad y permisos.", 
-          tag: "PENDING"
-        },
+        { id: "01", name: "Svarog Web", kind: "next.js · cloudflare", year: "2026", desc: "Portal comercial del Svarog EcoSystem. Landing, login con Google OAuth y SSO hacia news-admin.", tag: "LIVE", github: "https://github.com/SvarogMyl/svarog-web", live: "https://svasoft.cl" },
+        { id: "02", name: "Lab Hub (Next.js)", kind: "next.js · cloudflare", year: "2026", desc: "Portal central moderno con i18n, TypeScript y diseño Holo.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-hub-nextjs", live: "https://hub.svasoft.cl" },
+        { id: "03", name: "Store (Spring Boot)", kind: "next.js · spring boot", year: "2026", desc: "Catálogo de productos full-stack — Next.js consume la API REST de Spring Boot. CRUD con paginación y JWT.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-frontend-nextjs", live: "https://store.svasoft.cl" },
+        { id: "04", name: "Lab Hub (React)", kind: "react · vite", year: "2026", desc: "Versión legacy del portal central en React puro.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-hub-react", live: "https://lab-hub-react.pages.dev" },
+        { id: "05", name: "Backend Core (Node.js)", kind: "node.js · prisma", year: "2026", desc: "API central que unifica datos y proyectos del ecosistema.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-core-node", live: "https://api.svasoft.cl" },
+        { id: "06", name: "Lab Spring Postgres", kind: "java · spring boot", year: "2026", desc: "Backend robusto en Java con Spring Boot y PostgreSQL.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-spring-postgres", live: "https://spring.svasoft.cl", docs: "https://spring.svasoft.cl/swagger-ui/index.html" },
+        { id: "07", name: "Auth Service", kind: "go · gin", year: "2026", desc: "IdP central del ecosistema. Registro, login y validación JWT.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-auth-service", live: "https://auth.svasoft.cl" },
+        { id: "08", name: "News Service", kind: "node.js · prisma · r2", year: "2026", desc: "API SaaS multi-tenant para gestión de noticias con storage en Cloudflare R2.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-news-service", live: "https://news.svasoft.cl" },
+        { id: "09", name: "Mail Service", kind: "python · fastapi · rabbitmq", year: "2026", desc: "Microservicio de emails con FastAPI, RabbitMQ y Brevo.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-mail-service", live: "https://mail.svasoft.cl" },
+        { id: "10", name: "Monitor Service", kind: "node.js · express", year: "2026", desc: "Keep-alive del ecosistema. Pings cada 5 minutos a todos los servicios.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-monitor-service", live: "https://monitor.svasoft.cl" },
+        { id: "11", name: "Data Service", kind: "python · pandas", year: "2026", desc: "Pipeline automatizado de conversión Excel a JSON.", tag: "LIVE", github: "https://github.com/SvarogMyl/lab-data-service" },
+        { id: "12", name: "Holo Template", kind: "react · css · oss", year: "2026", desc: "Design system CSS/React reutilizable del ecosistema. Open source.", tag: "OSS", github: "https://github.com/SvarogMyl/lab-template-holo" },
       ],
     },
     stack: {
       tag: "// manifiesto_tech",
       title: "El Stack",
       groups: [
-        { label: "cloud providers", items: ["Oracle Cloud", "Cloudflare", "Vercel", "Docker", "GitHub Actions"] },
+        { label: "cloud providers", items: ["Oracle Cloud", "Cloudflare", "Docker", "GitHub Actions"] },
         { label: "lenguajes core", items: ["Java 21", "Node.js 20", "Go 1.22", "Python 3.10", "TypeScript"] },
         { label: "almacenamiento", items: ["PostgreSQL", "Redis", "DuckDB"] },
         { label: "devops", items: ["Docker", "GitHub Actions", "Terraform"] },
